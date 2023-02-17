@@ -4,11 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Bones Pràctiques</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/beige.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -16,8 +16,35 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-state="traitsSlide">
+					<h2>DRM Traits</h2>
+					<ul id="list">
+					  <li>Data “Based”</li>
+					  <li>Addressabilty</li>
+					  <li>Elicit A Response</li>
+					  <li>Measurable</li>
+					</ul>
+					<p><small>A singular focus on getting individual customers to take action and tracking when, where, and if they do.</small></p>
+				  </section>
+				<section data-state="punts">
+					<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="629" viewBox="0 0 1160 629" fill="none">
+						<g id="smallCircles">
+						<circle id="circle" cx="63" cy="36" r="8" fill="#3D57FA"/>
+						<circle id="circle" cx="376" cy="50" r="5" fill="#3D57FA"/>
+						<circle id="circle" cx="827" cy="30" r="5" fill="#3D57FA"/>
+						<circle id="circle" cx="1153" cy="20" r="7" fill="#3D57FA"/>
+						<circle id="circle" cx="1000" cy="237" r="3" fill="#3D57FA"/>
+						<circle id="circle" cx="1012" cy="473" r="5" fill="#3D57FA"/>
+						<circle id="circle" cx="650.5" cy="457.5" r="2.5" fill="#3D57FA"/>
+						<circle id="circle" cx="351" cy="625" r="4" fill="#3D57FA"/>
+						<circle id="circle" cx="289" cy="343" r="6" fill="#3D57FA"/>
+						<circle id="circle" cx="5" cy="506" r="5" fill="#3D57FA"/>
+						</g>
+						</svg>
+				</section>
+				<section data-state="cover"  >
+					<object data="cover.svg"  height="100%" width="100%"></object>
+				</section>
 			</div>
 		</div>
 
@@ -25,6 +52,8 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -35,6 +64,67 @@
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
+			Reveal.addEventListener('traitsSlide', function(){
+  TweenMax.staggerFrom('#list li', 0.5, {delay:1, scale:0, alpha:0, ease:'Back.easeOut'}, 0.25);
+});
+		</script>
+
+
+		<script>
+			Reveal.addEventListener('cover', function(){
+			const randomX = random(10, 20);
+const randomY = random(20, 30);
+const randomDelay = random(0, 1);
+const randomTime = random(3, 5);
+const randomTime2 = random(5, 10);
+const randomAngle = random(8, 12);
+
+gsap.set(circle, {
+  x: randomX(-1),
+  y: randomX(1),
+  rotation: randomAngle(-1)
+});
+
+moveX(circle, 1);
+moveY(circle, -1);
+rotate(circle, 1);
+
+function rotate(target, direction) {
+  
+  gsap.to(target, randomTime2(), {
+    rotation: randomAngle(direction),
+    // delay: randomDelay(),
+    ease: Sine.easeInOut,
+    onComplete: rotate,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function moveX(target, direction) {
+  
+  gsap.to(target, randomTime(), {
+    x: randomX(direction),
+    ease: Sine.easeInOut,
+    onComplete: moveX,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function moveY(target, direction) {
+  
+  gsap.to(target, randomTime(), {
+    y: randomY(direction),
+    ease: Sine.easeInOut,
+    onComplete: moveY,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function random(min, max) {
+  const delta = max - min;
+  return (direction = 1) => (min + delta * Math.random()) * direction;
+}
+});
 		</script>
 	</body>
 </html>
