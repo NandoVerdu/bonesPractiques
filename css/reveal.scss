@@ -1929,3 +1929,10 @@ $notesWidthPercent: 25%;
 .reveal .text-anim div {
   display:inline-block;
 }
+
+.reveal li:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+
+

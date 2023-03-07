@@ -104,3 +104,65 @@ Reveal.addEventListener('projecte',function(){
   tl2.from('h3',1.5,{x:-1000});
   tl2.from('h2',1.5,{x:2000},"<");
 })
+
+Reveal.addEventListener('evidencies', function(){
+gsap.from('li',1,{
+delay:1,
+x:-2000,
+ease:"elastic.out(1, 0.3)",
+repeat:0,
+stagger:.85
+});
+gsap.from('h3',1,{
+  scale:1.5,
+  ease: "Bounce.easeOut",
+  delay:1
+})
+});
+
+Reveal.addEventListener('perque',function(){
+  var tlpq=gsap.timeline({repeat: 0, repeatDelay: 1});
+  tlpq.from('p',1,{
+  delay:.5,
+  y:-2000,
+  ease:"Back.easeOut.config(1.7)",
+  repeat:0,
+  stagger:.85
+});
+tlpq.from('img',1,{
+  delay:1,
+  css:{opacity:0, scale:1.5},
+  stagger:0.85
+},"<");
+
+
+
+var tlBallBounce=new gsap.timeline({repeat: -1})
+
+tlBallBounce.
+      to("#crist",1.4,{y:'-=10', ease: Sine.easeInOut}).
+      to('#crist',1.7,{y:'+=10', ease: Sine.easeInOut});
+
+      var tlBallBounce2=new gsap.timeline({repeat: -1})
+
+      tlBallBounce2.
+            to("#mans",1.9,{y:'+=10', ease: Sine.easeInOut}).
+            to('#mans',1.5,{y:'-=10', ease: Sine.easeInOut});    
+      
+            var tlBallBounce3=new gsap.timeline({repeat: -1, yoyo:true})
+
+      tlBallBounce3.
+                  to("#rellevant",1.9,{y:'-=12', ease: Sine.easeInOut}).
+                  to('#rellevant',1.5,{y:'+=14', ease: Sine.easeInOut});
+    
+        var svg = $('#rellevant');
+                  var rotation=0;
+                  
+                  (function Rotation() {
+                    rotation = rotation + 90 ;
+                    TweenMax.to(svg,0.5,{rotation:rotation,delay:0.8,onComplete:Rotation});
+                  }());
+    
+                 
+
+   });
