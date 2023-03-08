@@ -179,3 +179,21 @@ tlBallBounce.
    Reveal.addEventListener('cara',function(){
     TweenMax.from('img',1.5,{delay:1.5,scale:0})
    })
+
+   Reveal.addEventListener('conclusio',function(){
+    for(var i=1;5;i++){
+    const path = document.querySelector("#palo".concat(i));
+const length = path.getTotalLength();
+
+gsap.set(path, {
+  strokeDashoffset: length,
+  strokeDasharray: length
+});
+
+gsap.to(path, {
+  strokeDashoffset: 0,
+  duration: .8,
+  repeat:-1,
+  repeatDelay:.7
+});}
+   })
