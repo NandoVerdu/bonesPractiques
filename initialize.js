@@ -1,6 +1,7 @@
 
 
 
+
 Reveal.initialize({
     hash: true,
     width: 960,
@@ -166,3 +167,15 @@ tlBallBounce.
                  
 
    });
+
+   Reveal.addEventListener('llibre1',function(){
+    TweenMax.staggerFrom('li', 0.5, {delay:.5, scale:0, alpha:0, ease:'Back.easeOut'}, 0.25);
+   });
+
+   Reveal.addEventListener('libre2',function(){
+    TweenMax.staggerFrom('li', 0.5, {delay:.5, scale:0, alpha:0, ease:'Back.easeOut'}, 0.25);
+   });
+
+   Reveal.addEventListener('cara',function(){
+    TweenMax.from('img',1.5,{delay:1.5,scale:0})
+   })
